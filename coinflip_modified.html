@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Coin Flip game</title>
+</head>
+<body>
+    <button onclick="
+    verdict= playGame('Heads');
+    finalScores(verdict);
+      ">HEADS</button>
+
+
+
+<button onclick="
+     verdict=playGame('Tails');
+     finalScores(verdict);
+      " >TAILS</button>
+<button onclick="
+  localStorage.removeItem('scores');
+   score.wins=0;
+   score.losses=0;
+   alert('The scores were reset begin the new game!!');
+"
+>Reset</button>
+<script>
+  const score = JSON.parse(localStorage.getItem('scores')) || { wins: 0, losses: 0 };
+
+    
+    let result='';
+    let verdict='';
+    var compMov='';
+    function computerMove(num)
+    {
+      if(num>=0 && num<=0.5)
+         compMov='Heads';
+      else
+         compMov='Tails';
+      return compMov;
+
+    }
+    function playGame(playerMov)
+    {
+      const num=Math.random();
+        compMov=computerMove(num);
+         
+        if(playerMov=='Heads' && compMov=='Heads')
+            verdict='You win!!';
+        else if(playerMov=='Heads' && compMov=='Tails')
+            verdict='Sorry mate, You lost';
+        else if(playerMov=='Tails' && compMov=='Tails')
+            verdict='You win!!';
+        else
+            verdict='Sorry mate, You lost';
+        return verdict;
+    }
+    function finalScores(verdict)
+    {
+        if (verdict=='You win!!')
+            score.wins+=1;
+        else
+            score.losses+=1;
+        localStorage.setItem('scores',JSON.stringify(score));
+        alert(`The coin was :${compMov}
+                The result is:${verdict}
+      The scores are: WIN:${score.wins}  LOSS:${score.losses}`);
+    }
+</script>
+</body>
+
+
+</html>
+

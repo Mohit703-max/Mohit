@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TODO LIST</title>
+    <link rel="stylesheet" href="styles/todo-list.css">
+  </head>
+  <body>
+    <p>Todo List Practice 1</p>
+    
+    <input class="js-input1" placeholder="todo name" onkeydown="
+      if(event.key=='Enter') addToconsole1();
+    ">
+    <button onclick="addToconsole1();">Add</button>
+
+    <p>Todo List Practice 2</p>
+    
+    <input class="js-input2" placeholder="todo name" onkeydown="
+      if(event.key=='Enter') addToconsole2();
+    ">
+    <input class="js-date" type="date">
+    <button onclick="
+    addToconsole2();
+    ">Add</button>
+    <div class="js-todo-list"></div>
+ <script src="scripts/todo-list.js"></script>
+  </body>
+</html>
